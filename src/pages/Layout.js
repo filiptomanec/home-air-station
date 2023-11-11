@@ -3,6 +3,7 @@ import { Outlet, Link } from "react-router-dom";
 const Layout = () => {
     return (
         <>
+            <h1>Domácí stanice</h1>
             <nav>
                 <ul>
                     <li>
@@ -13,7 +14,6 @@ const Layout = () => {
                     </li>
                 </ul>
             </nav>
-
             <Outlet />
         </>
     )
