@@ -1,7 +1,29 @@
 import {Line} from "react-chartjs-2";
+import {useEffect, useState} from "react";
 
 const LineChartComponent = ({data, min, max, label, color}) => {
-    const fontSize = window.innerWidth < 1300 ? 22 : 14;
+    const [fontSize, setFontSize] = useState(22);
+    const [borderWidth, setBorderWidth] = useState(2);
+
+    useEffect(() => {
+        const handleResize = () => {
+            const windowWidth = window.innerWidth;
+            if (windowWidth < 500) {
+                setFontSize(12);
+                setBorderWidth(1.5);
+            } else if (windowWidth < 1300) {
+                setFontSize(14);
+                setBorderWidth(2);
+            } else {
+                setFontSize(16);
+                setBorderWidth(2);
+            }
+        };
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return data && (
         <Line
             data={{
@@ -11,7 +33,8 @@ const LineChartComponent = ({data, min, max, label, color}) => {
                     backgroundColor: color,
                     borderColor: color,
                     data: data.y,
-                    pointStyle: false
+                    pointStyle: false,
+                    borderWidth: borderWidth
                 }]
             }}
             options={{
