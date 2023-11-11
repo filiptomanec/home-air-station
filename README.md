@@ -2,6 +2,8 @@
 
 Welcome to the Home Air Quality Tracker application repository. This React-based application is designed to help you monitor the air quality in your home with a focus on two primary rooms: the living room and the bedroom. It provides real-time data on temperature, humidity, and CO2 levels, as well as historical trends via graphical representations. Configuration settings for the application are secure and require user authentication.
 
+![Alt text](./ReadmeImg.png?raw=true "Screen")
+
 ## Features
 
 - **Real-time Air Quality Data**: See the latest readings for temperature, humidity, and CO2 levels in your living room and bedroom.
