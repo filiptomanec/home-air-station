@@ -9,8 +9,8 @@ import {useEffect} from "react";
 Chart.register(CategoryScale);
 
 const Room = ({sensorId}) => {
-    const [currentData, reloadCurrentData] = useFetch("http://filiptomanec.php5.cz/get-current-values.php?sensor_id=" + sensorId);
-    const [chartData, reloadChartData] = useFetch("http://filiptomanec.php5.cz/get-chart-data.php?sensor_id=" + sensorId);
+    const [currentData, reloadCurrentData] = useFetch(process.env.REACT_APP_API_URL+ "get-current-values.php?sensor_id=" + sensorId);
+    const [chartData, reloadChartData] = useFetch(process.env.REACT_APP_API_URL+ "get-chart-data.php?sensor_id=" + sensorId);
 
     const temperatureChartData = createChartData(chartData, 'temperatures');
     const humidityChartData = createChartData(chartData, 'humidities');
