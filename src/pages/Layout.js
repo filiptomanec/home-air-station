@@ -1,4 +1,5 @@
-import { Outlet, Link } from "react-router-dom";
+import styles from '../styles/main.module.css';
+import {Outlet, NavLink} from "react-router-dom";
 
 const Layout = () => {
     return (
@@ -7,16 +8,20 @@ const Layout = () => {
             <nav>
                 <ul>
                     <li>
-                        <Link to="/">Obývák</Link>
+                        <NavLink to="/" className={({isActive}) => isActive && styles.active}>
+                            Obývák
+                        </NavLink>
                     </li>
                     <li>
-                        <Link to="/bedroom">Ložnice</Link>
+                        <NavLink to="/bedroom" className={({isActive}) => isActive && styles.active}>
+                            Ložnice
+                        </NavLink>
                     </li>
                 </ul>
             </nav>
-            <Outlet />
+            <Outlet/>
         </>
-    )
+    );
 };
 
 export default Layout;
