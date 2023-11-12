@@ -38,6 +38,8 @@ const LineChartComponent = ({data, min, max, label, color}) => {
                 }]
             }}
             options={{
+                maintainAspectRatio: true,
+                aspectRatio: 1.7,
                 title: {
                     display: true,
                     text: label
