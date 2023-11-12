@@ -41,6 +41,7 @@ li a:hover:not(.active) {
 
 .chart {
     flex-basis: 33%;
+    height: 500px;
 }
 
 .dashboard {
@@ -54,6 +55,7 @@ li a:hover:not(.active) {
 @media (max-width: 1200px) {
     body {
         font-size: 22px;
+        padding: 5px;
     }
 
     h1 {
@@ -71,6 +73,7 @@ li a:hover:not(.active) {
 
     .dashboard div {
         font-size: 1.2em;
+        margin: 10px 0;
     }
     .chart {
         flex-basis: 100%;
@@ -85,24 +88,25 @@ li a:hover:not(.active) {
 
 @media (max-width: 500px) {
     body {
-        font-size: 20px;
+        font-size: 14px;
     }
 
     h1 {
-        font-size: 30px;
+        font-size: 22px;
     }
 
     h2 {
-        font-size: 24px;
+        font-size: 18px;
     }
 
     ul li a {
-        padding: 15px 24px;
+        padding: 10px 14px;
         font-size: 0.9em;
     }
 
     .dashboard div {
-        font-size: 1em;
+        font-size: 0.9em;
+        margin: 0;
     }
     .chart {
         flex-basis: 100%;
