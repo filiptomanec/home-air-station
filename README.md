@@ -98,6 +98,7 @@ Once the application is running, you can monitor the air quality in real-time. L
 Filip Tomanec - tomanec.f@gmail.com
 
 Project Link: [https://github.com/filiptomanec/home-air-station](https://github.com/filiptomanec/home-air-station)
+Backend Repository: https://github.com/filiptomanec/home-air-station-BE
 
 ## Acknowledgements
 
