@@ -5,16 +5,17 @@ import Chart from "chart.js/auto";
 import {CategoryScale} from "chart.js";
 import {createChartData, findChartDataMinMax} from "../utils";
 import {useEffect} from "react";
+import CircularProgress from '@mui/material/CircularProgress';
 
 Chart.register(CategoryScale);
 
 const Room = ({sensorId}) => {
-    const [currentData, reloadCurrentData] = useFetch(process.env.REACT_APP_API_URL+ "get-current-values.php?sensor_id=" + sensorId);
-    const [chartData, reloadChartData] = useFetch(process.env.REACT_APP_API_URL+ "get-chart-data.php?sensor_id=" + sensorId);
+    const [currentData, reloadCurrentData] = useFetch(process.env.REACT_APP_API_URL + "measurement/last/" + sensorId);
+    const [chartData, reloadChartData] = useFetch(process.env.REACT_APP_API_URL + "measurement/today/" + sensorId);
 
-    const temperatureChartData = createChartData(chartData, 'temperatures');
-    const humidityChartData = createChartData(chartData, 'humidities');
-    const co2ChartData = createChartData(chartData, 'co2_values');
+    const temperatureChartData = createChartData(chartData, 'temperature');
+    const humidityChartData = createChartData(chartData, 'humidity');
+    const co2ChartData = createChartData(chartData, 'co2');
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -25,14 +26,22 @@ const Room = ({sensorId}) => {
         return () => clearInterval(interval);
     }, [reloadCurrentData, reloadChartData]);
 
+    if (!currentData || !chartData) {
+        return (
+            <div style={{display: "flex", justifyContent: "center", alignItems: "center", height: "70vh"}}>
+                <CircularProgress/>
+            </div>
+        )
+    }
+
     return (
         <div>
             <div className={styles.dashboard}>
                 <div className={styles.dashboard}>
                     <h2>Aktuální hodnoty:</h2>
-                    <div>Teplota: {currentData?.data?.temperature || '-'} °C</div>
-                    <div>Vlhkost: {currentData?.data?.humidity || '-'} %</div>
-                    <div>CO2: {currentData?.data?.co2 || '-'} ppm</div>
+                    <div>Teplota: {currentData?.temperature || '-'} °C</div>
+                    <div>Vlhkost: {currentData?.humidity || '-'} %</div>
+                    <div>CO2: {currentData?.co2 || '-'} ppm</div>
                 </div>
             </div>
             <div className={styles.chartContainer}>

@@ -51,6 +51,19 @@ li a:hover:not(.active) {
     margin: 20px 0;
 }
 
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+.table {
+    display: flex;
+    padding: 50px;
+    align-items: center;
+}
+
 /* Mobile view */
 @media (max-width: 1200px) {
     body {
