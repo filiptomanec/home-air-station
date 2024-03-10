@@ -58,6 +58,18 @@ Before running the project, you need to have Node.js and npm installed on your m
 
 Once the application is running, you can monitor the air quality in real-time. Log in with your credentials to access the settings and adjust the application as needed.
 
+## Deploy
+
+1. Build
+   ```sh
+   npm run build
+   ```
+
+2. Deploy
+   ```sh
+   firebase deploy
+   ```
+
 [//]: # ()
 [//]: # (## Roadmap)
 
