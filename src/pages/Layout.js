@@ -6,7 +6,7 @@ const Layout = () => {
         <>
             <h1>Domácí stanice</h1>
             <nav>
-                <ul>
+                <ul style={{display: "flex"}}>
                     <li>
                         <NavLink to="/" className={({isActive}) => isActive && styles.active}>
                             Obývák
@@ -15,6 +15,11 @@ const Layout = () => {
                     <li>
                         <NavLink to="/bedroom" className={({isActive}) => isActive && styles.active}>
                             Ložnice
+                        </NavLink>
+                    </li>
+                    <li style={{marginLeft: "auto"}}>
+                        <NavLink to="/table" className={({isActive}) => isActive && styles.active}>
+                            Tabulka
                         </NavLink>
                     </li>
                 </ul>
