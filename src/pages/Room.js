@@ -10,8 +10,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 Chart.register(CategoryScale);
 
 const Room = ({sensorId}) => {
-    const [currentData, reloadCurrentData] = useFetch(process.env.REACT_APP_API_URL + "measurement/last/" + sensorId);
-    const [chartData, reloadChartData] = useFetch(process.env.REACT_APP_API_URL + "measurement/today/" + sensorId);
+    const { data: currentData, fetchData: reloadCurrentData, isLoading: currentDataLoading } = useFetch(process.env.REACT_APP_API_URL + "measurement/last/" + sensorId);
+    const { data: chartData, fetchData: reloadChartData, isLoading: chartDataLoading } = useFetch(process.env.REACT_APP_API_URL + "measurement/today/" + sensorId);
 
     const temperatureChartData = createChartData(chartData, 'temperature');
     const humidityChartData = createChartData(chartData, 'humidity');
@@ -26,9 +26,9 @@ const Room = ({sensorId}) => {
         return () => clearInterval(interval);
     }, [reloadCurrentData, reloadChartData]);
 
-    if (!currentData || !chartData) {
+    if (currentDataLoading || chartDataLoading) {
         return (
-            <div style={{display: "flex", justifyContent: "center", alignItems: "center", height: "70vh"}}>
+            <div className={styles.loading}>
                 <CircularProgress/>
             </div>
         )

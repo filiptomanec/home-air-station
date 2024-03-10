@@ -61,7 +61,7 @@ li a:hover:not(.active) {
 .table {
     display: flex;
     padding: 50px;
-    align-items: center;
+    gap: 30px;
 }
 
 /* Mobile view */
@@ -69,6 +69,11 @@ li a:hover:not(.active) {
     body {
         font-size: 22px;
         padding: 5px;
+    }
+
+    .table {
+        padding: 10px;
+        gap: 10px;
     }
 
     h1 {
