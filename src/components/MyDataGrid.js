@@ -7,7 +7,7 @@ import {DataGrid, GridActionsCellItem, GridRowEditStopReasons, GridRowModes,} fr
 import {Box, Typography} from "@mui/material";
 
 function DataGridTitle(title) {
-    return(
+    return (
         <Box style={{width: "100%", display: "flex", justifyContent: "center", alignItems: "center"}}>
             <Typography variant="h5">{title}</Typography>
         </Box>
@@ -32,8 +32,19 @@ export default function MyDataGrid(props) {
         setRowModesModel({...rowModesModel, [id]: {mode: GridRowModes.View}});
     };
 
-    const handleDeleteClick = (id) => () => {
-        setRows(rows.filter((row) => row.id !== id));
+    const handleDeleteClick = (id) => async () => {
+        try {
+            const response = await fetch(process.env.REACT_APP_API_URL + "measurement/" + id, {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+            });
+            if (!response.ok) {
+                throw new Error("Delete failed.");
+            }
+            setRows(rows.filter(row => row.id !== id));
+        } catch (error) {
+            console.error("Delete error:", error);
+        }
     };
 
     const handleCancelClick = (id) => () => {
@@ -48,10 +59,27 @@ export default function MyDataGrid(props) {
         }
     };
 
-    const processRowUpdate = (newRow) => {
-        const updatedRow = {...newRow, isNew: false};
-        setRows(rows.map((row) => (row.id === newRow.id ? updatedRow : row)));
-        return updatedRow;
+    const processRowUpdate = async (newRow) => {
+        try {
+            const response = await fetch(process.env.REACT_APP_API_URL + "measurement/" + newRow.id, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    temperature: +newRow.temperature,
+                    humidity: +newRow.humidity,
+                    co2: +newRow.co2,
+                }),
+            });
+            if (!response.ok) {
+                throw new Error("Update failed.");
+            }
+            const data = await response.json();
+            setRows(rows.map((row) => (row.id === newRow.id ? data : row)));
+            return data;
+        } catch (error) {
+            console.error("Update error:", error);
+            throw new Error("Update failed.");
+        }
     };
 
     const handleRowModesModelChange = (newRowModesModel) => {
