@@ -5,11 +5,12 @@ import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Close';
 import {DataGrid, GridActionsCellItem, GridRowEditStopReasons, GridRowModes,} from '@mui/x-data-grid';
 import {Box, Typography} from "@mui/material";
+import styles from '../styles/main.module.css';
 
 function DataGridTitle(title) {
     return (
-        <Box style={{width: "100%", display: "flex", justifyContent: "center", alignItems: "center"}}>
-            <Typography variant="h5">{title}</Typography>
+        <Box className={styles.tableTitle}>
+            <Typography variant="h6">{title}</Typography>
         </Box>
     )
 }
