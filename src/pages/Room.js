@@ -1,4 +1,3 @@
-import styles from '../styles/main.module.css'
 import useFetch from "../hooks/useFetch";
 import LineChartComponent from "../components/LineChartComponent";
 import Chart from "chart.js/auto";
@@ -28,7 +27,7 @@ const Room = ({sensorId}) => {
 
     if (currentDataLoading || chartDataLoading) {
         return (
-            <div className={styles.loading}>
+            <div className="loading">
                 <CircularProgress/>
             </div>
         )
@@ -36,16 +35,16 @@ const Room = ({sensorId}) => {
 
     return (
         <div>
-            <div className={styles.dashboard}>
-                <div className={styles.dashboard}>
+            <div className="dashboard">
+                <div className="dashboard">
                     <h2>Aktuální hodnoty:</h2>
                     <div>Teplota: {currentData?.temperature || '-'} °C</div>
                     <div>Vlhkost: {currentData?.humidity || '-'} %</div>
                     <div>CO2: {currentData?.co2 || '-'} ppm</div>
                 </div>
             </div>
-            <div className={styles.chartContainer}>
-                <div className={styles.chart}>
+            <div className="chartContainer">
+                <div className="chart">
                     <LineChartComponent
                         data={temperatureChartData}
                         min={findChartDataMinMax(temperatureChartData)?.min - 2}
@@ -54,7 +53,7 @@ const Room = ({sensorId}) => {
                         color={'rgb(255, 99, 132)'}
                     />
                 </div>
-                <div className={styles.chart}>
+                <div className="chart">
                     <LineChartComponent
                         data={humidityChartData}
                         min={findChartDataMinMax(humidityChartData)?.min - 5}
@@ -63,7 +62,7 @@ const Room = ({sensorId}) => {
                         color={'rgb(54, 162, 235)'}
                     />
                 </div>
-                <div className={styles.chart}>
+                <div className="chart">
                     <LineChartComponent
                         data={co2ChartData}
                         min={findChartDataMinMax(co2ChartData)?.min - 100}

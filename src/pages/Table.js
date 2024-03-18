@@ -1,8 +1,8 @@
-import styles from '../styles/main.module.css'
 import useFetch from "../hooks/useFetch";
 import {useEffect} from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import MyDataGrid from "../components/MyDataGrid";
+import '../styles/main.css';
 
 const columns = [
     {
@@ -53,13 +53,13 @@ const Table = () => {
     }, [reloadSensorData1, reloadSensorData2]);
 
     if (!sensorData1 || !sensorData2) {
-        return (<div className={styles.loading}>
+        return (<div className="loading">
             <CircularProgress/>
         </div>)
     }
 
     return (
-        <div className={styles.table}>
+        <div className="table">
             <MyDataGrid
                 rows={sensorData1}
                 columns={columns}

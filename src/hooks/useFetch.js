@@ -1,9 +1,11 @@
-import { useState, useEffect, useCallback } from "react";
+import {useCallback, useEffect, useState} from "react";
+import {useAuth} from "../auth/AuthProvider";
 
 const useFetch = (url, method = "GET", body, params, headers) => {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const auth = useAuth();
 
     const serializeParams = params => {
         return Object.keys(params).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`).join('&');
@@ -15,6 +17,7 @@ const useFetch = (url, method = "GET", body, params, headers) => {
         const fetchConfig = {
             method,
             headers: {
+                'Authorization': 'Bearer ' + auth.token,
                 'Content-Type': 'application/json',
                 ...headers
             },
@@ -38,7 +41,7 @@ const useFetch = (url, method = "GET", body, params, headers) => {
         } finally {
             setIsLoading(false);
         }
-    }, [url, method, body, params, headers]);
+    }, [url, method, body, params, headers, auth.token]);
 
     useEffect(() => {
         fetchData();

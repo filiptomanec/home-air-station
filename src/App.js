@@ -1,22 +1,29 @@
 import './App.css';
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Room from "./pages/Room";
 import NoPage from "./pages/NoPage";
-import Layout from "./pages/Layout";
 import Table from "./pages/Table";
+import AuthProvider from "./auth/AuthProvider";
+import PrivateRoute from "./pages/PrivateRoute";
+import Login from "./components/Login";
+import Welcome from "./components/Welcome";
 
 function App() {
     return (
         <div className="App">
             <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<Layout/>}>
-                        <Route index path="/" element={<Room sensorId={1}/>}/>
-                        <Route path="bedroom" element={<Room sensorId={2}/>}/>
-                        <Route path="table" element={<Table/>}/>
+                <AuthProvider>
+                    <Routes>
+                        <Route index path="/" element={<Welcome/>}/>
+                        <Route path="/login" element={<Login/>}/>
+                        <Route element={<PrivateRoute/>}>
+                            <Route path="livingroom" element={<Room sensorId={1}/>}/>
+                            <Route path="bedroom" element={<Room sensorId={2}/>}/>
+                            <Route path="table" element={<Table/>}/>
+                        </Route>
                         <Route path="*" element={<NoPage/>}/>
-                    </Route>
-                </Routes>
+                    </Routes>
+                </AuthProvider>
             </BrowserRouter>
         </div>
     );

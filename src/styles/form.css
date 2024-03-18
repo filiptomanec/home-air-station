@@ -1,0 +1,44 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form_control {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form_control label {
+    /*display: block;*/
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+.form_control input[type=username],
+.form_control input[type=password] {
+    width: 200px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.form_control input[type=username]:focus,
+.form_control input[type=password]:focus {
+    border-color: #0056b3;
+    outline: none;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
