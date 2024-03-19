@@ -31,6 +31,9 @@ const useFetch = (url, method = "GET", body, params, headers) => {
             const response = await fetch(queryUrl, fetchConfig);
             const responseData = await response.json();
 
+            if (response.status === 401) {
+                auth.logOut();
+            }
             if (!response.ok) {
                 throw new Error(responseData.message || "Failed to fetch data.");
             }
@@ -41,7 +44,7 @@ const useFetch = (url, method = "GET", body, params, headers) => {
         } finally {
             setIsLoading(false);
         }
-    }, [url, method, body, params, headers, auth.token]);
+    }, [url, method, body, params, headers, auth]);
 
     useEffect(() => {
         fetchData();

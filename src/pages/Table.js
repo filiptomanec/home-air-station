@@ -2,7 +2,6 @@ import useFetch from "../hooks/useFetch";
 import {useEffect} from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import MyDataGrid from "../components/MyDataGrid";
-import '../styles/main.css';
 
 const columns = [
     {
