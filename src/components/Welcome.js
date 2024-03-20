@@ -10,14 +10,14 @@ const Welcome = () => {
     const {t} = useTranslation();
     return (
         <div style={{display: "flex", alignItems: "flex-start"}}>
-            <div style={{flex: 1}}/>
-            <div className="container">
+            <div style={{flex: 0.2}}/>
+            <div className="container" style={{flex: 1}}>
                 <h1>{t("welcomeToTheHomeStationApp")}</h1>
                 <button onClick={() => navigate("/login")} className="btnSubmit" style={{width: "auto"}}>
                     {t("login")}
                 </button>
             </div>
-            <div style={{display: "flex", flex: 1, justifyContent: "flex-end", alignItems: "flex-start"}}>
+            <div style={{display: "flex", flex: 0.2, justifyContent: "flex-end", alignItems: "flex-start"}}>
                 <LanguageSelector/>
             </div>
         </div>

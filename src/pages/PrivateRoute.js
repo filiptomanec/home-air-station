@@ -13,17 +13,16 @@ const PrivateRoute = () => {
     return (
         <>
             <div className="flexContainer">
-                <div style={{flex: 1}}/>
+                <div className="flexContainer" style={{justifyContent: "flex-start", flex: 1, marginLeft: "20px"}}>
+                    <LanguageSelector/>
+                </div>
                 <h1 className="noWrap">{t("homeStation")}</h1>
-                <div style={{flex: 1, display: "flex", justifyContent: "flex-end"}}>
+                <div style={{flex: 1, display: "flex", justifyContent: "flex-end", marginRight: "20px"}}>
                     <div style={{marginBottom: 20}}>
                         <h4 style={{margin: 10}}>{t("user")}: {auth.user}</h4>
                         <button onClick={() => auth.logOut()} className="btnSubmit btnSubmit-small">
                             {t("logout")}
                         </button>
-                    </div>
-                    <div className="flexContainer" style={{marginLeft: "50px"}}>
-                        <LanguageSelector/>
                     </div>
                 </div>
             </div>

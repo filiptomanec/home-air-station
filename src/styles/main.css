@@ -158,4 +158,8 @@ li a:hover:not(.active) {
         flex-direction: column;
         align-items: center;
     }
+
+    .noWrap {
+        white-space: normal;
+    }
 }
