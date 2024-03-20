@@ -5,6 +5,7 @@ import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Close';
 import {DataGrid, GridActionsCellItem, GridRowEditStopReasons, GridRowModes,} from '@mui/x-data-grid';
 import {Box, Typography} from "@mui/material";
+import {useTranslation} from "react-i18next";
 
 function DataGridTitle(title) {
     return (
@@ -15,6 +16,7 @@ function DataGridTitle(title) {
 }
 
 export default function MyDataGrid(props) {
+    const {t} = useTranslation();
     const [rows, setRows] = React.useState(props.rows);
     const [rowModesModel, setRowModesModel] = React.useState({});
 
@@ -97,7 +99,7 @@ export default function MyDataGrid(props) {
         {
             field: 'actions',
             type: 'actions',
-            headerName: 'Actions',
+            headerName: t("actions"),
             width: 100,
             cellClassName: 'actions',
             getActions: ({id}) => {
