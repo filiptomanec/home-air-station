@@ -11,5 +11,7 @@
   "bedRoom": "Bed Room",
   "table": "Table",
   "user": "User",
-  "logout": "Log out"
+  "logout": "Log out",
+  "sensor": "Sensor",
+  "actions": "Actions"
 }

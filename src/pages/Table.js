@@ -2,37 +2,40 @@ import useFetch from "../hooks/useFetch";
 import {useEffect} from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import MyDataGrid from "../components/MyDataGrid";
-
-const columns = [
-    {
-        field: 'id',
-        headerName: 'ID',
-        width: 90
-    },
-    {
-        field: 'temperature',
-        headerName: 'Teplota',
-        type: 'number',
-        width: 120,
-        editable: true
-    },
-    {
-        field: 'humidity',
-        headerName: 'Vlhkost',
-        type: 'number',
-        width: 120,
-        editable: true
-    },
-    {
-        field: 'co2',
-        headerName: 'CO2',
-        type: 'number',
-        width: 120,
-        editable: true
-    },
-];
+import {useTranslation} from "react-i18next";
 
 const Table = () => {
+    const {t} = useTranslation();
+
+    const columns = [
+        {
+            field: 'id',
+            headerName: 'ID',
+            width: 90
+        },
+        {
+            field: 'temperature',
+            headerName: t("temperature"),
+            type: 'number',
+            width: 120,
+            editable: true
+        },
+        {
+            field: 'humidity',
+            headerName: t("humidity"),
+            type: 'number',
+            width: 120,
+            editable: true
+        },
+        {
+            field: 'co2',
+            headerName: 'CO2',
+            type: 'number',
+            width: 120,
+            editable: true
+        },
+    ];
+
     const {
         data: sensorData1,
         fetchData: reloadSensorData1
@@ -62,12 +65,12 @@ const Table = () => {
             <MyDataGrid
                 rows={sensorData1}
                 columns={columns}
-                title="Senzor: Obývák"
+                title={t("sensor") + ": " + t("livingRoom")}
             />
             <MyDataGrid
                 rows={sensorData2}
                 columns={columns}
-                title="Senzor: Ložnice"
+                title={t("sensor") + ": " + t("bedRoom")}
             />
         </div>
     );

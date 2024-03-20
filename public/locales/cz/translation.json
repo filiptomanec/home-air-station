@@ -11,5 +11,7 @@
   "bedRoom": "Ložnice",
   "table": "Tabulka",
   "user": "Uživatel",
-  "logout": "Odhlásit"
+  "logout": "Odhlásit",
+  "sensor": "Senzor",
+  "actions": "Akce"
 }
