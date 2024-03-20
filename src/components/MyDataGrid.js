@@ -36,7 +36,10 @@ export default function MyDataGrid(props) {
         try {
             const response = await fetch(process.env.REACT_APP_API_URL + "measurement/" + id, {
                 method: 'DELETE',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem("token"),
+                    'Content-Type': 'application/json'
+                },
             });
             if (!response.ok) {
                 throw new Error("Delete failed.");
@@ -63,7 +66,10 @@ export default function MyDataGrid(props) {
         try {
             const response = await fetch(process.env.REACT_APP_API_URL + "measurement/" + newRow.id, {
                 method: 'PATCH',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem("token"),
+                    'Content-Type': 'application/json'
+                },
                 body: JSON.stringify({
                     temperature: +newRow.temperature,
                     humidity: +newRow.humidity,
