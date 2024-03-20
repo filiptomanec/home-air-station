@@ -4,6 +4,7 @@ import "../styles/main.css";
 import "../styles/form.css";
 import "../styles/button.css";
 import LoadingSpinner from "./LoadingSpinner";
+import {useTranslation} from "react-i18next";
 
 
 const Login = () => {
@@ -12,6 +13,7 @@ const Login = () => {
         password: "",
     });
     const [isLoading, setIsLoading] = useState(false);
+    const {t} = useTranslation();
 
     const auth = useAuth();
     const handleSubmitEvent = (e) => {
@@ -37,7 +39,7 @@ const Login = () => {
         <div className="container">
             <form onSubmit={handleSubmitEvent} className="form">
                 <div className="form_control">
-                    <label htmlFor="username">Uživatelské jméno:</label>
+                    <label htmlFor="username">{t("username")}:</label>
                     <input
                         type="username"
                         name="username"
@@ -51,7 +53,7 @@ const Login = () => {
                     </div>
                 </div>
                 <div className="form_control">
-                    <label htmlFor="password">Heslo:</label>
+                    <label htmlFor="password">{t("password")}:</label>
                     <input
                         type="password"
                         id="password"
@@ -68,7 +70,7 @@ const Login = () => {
                     {isLoading ?
                         <LoadingSpinner/>
                         :
-                        "Přihlásit"
+                        t("login")
                     }
                 </button>
             </form>

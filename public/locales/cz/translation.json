@@ -1,0 +1,15 @@
+{
+  "welcomeToTheHomeStationApp": "Vítejte v aplikaci Home Air Station!",
+  "login": "Přihlásit",
+  "username": "Uživatelské jméno",
+  "password": "Heslo",
+  "currentValues": "Aktuální hodnoty",
+  "temperature": "Teplota",
+  "humidity": "Vlhkost",
+  "homeStation": "Domácí stanice",
+  "livingRoom": "Obývák",
+  "bedRoom": "Ložnice",
+  "table": "Tabulka",
+  "user": "Uživatel",
+  "logout": "Odhlásit"
+}

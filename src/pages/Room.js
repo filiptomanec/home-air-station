@@ -5,12 +5,15 @@ import {CategoryScale} from "chart.js";
 import {createChartData, findChartDataMinMax} from "../utils";
 import {useEffect} from "react";
 import CircularProgress from '@mui/material/CircularProgress';
+import {useTranslation} from "react-i18next";
 
 Chart.register(CategoryScale);
 
 const Room = ({sensorId}) => {
     const { data: currentData, fetchData: reloadCurrentData, isLoading: currentDataLoading } = useFetch(process.env.REACT_APP_API_URL + "measurement/last/" + sensorId);
     const { data: chartData, fetchData: reloadChartData, isLoading: chartDataLoading } = useFetch(process.env.REACT_APP_API_URL + "measurement/today/" + sensorId);
+
+    const {t} = useTranslation();
 
     const temperatureChartData = createChartData(chartData, 'temperature');
     const humidityChartData = createChartData(chartData, 'humidity');
@@ -37,9 +40,9 @@ const Room = ({sensorId}) => {
         <div>
             <div className="dashboard">
                 <div className="dashboard">
-                    <h2>Aktuální hodnoty:</h2>
-                    <div>Teplota: {currentData?.temperature || '-'} °C</div>
-                    <div>Vlhkost: {currentData?.humidity || '-'} %</div>
+                    <h2>{t("currentValues")}:</h2>
+                    <div>{t("temperature")}: {currentData?.temperature || '-'} °C</div>
+                    <div>{t("humidity")}: {currentData?.humidity || '-'} %</div>
                     <div>CO2: {currentData?.co2 || '-'} ppm</div>
                 </div>
             </div>
@@ -49,7 +52,7 @@ const Room = ({sensorId}) => {
                         data={temperatureChartData}
                         min={findChartDataMinMax(temperatureChartData)?.min - 2}
                         max={findChartDataMinMax(temperatureChartData)?.max + 2}
-                        label={'Teplota'}
+                        label={t("temperature")}
                         color={'rgb(255, 99, 132)'}
                     />
                 </div>
@@ -58,7 +61,7 @@ const Room = ({sensorId}) => {
                         data={humidityChartData}
                         min={findChartDataMinMax(humidityChartData)?.min - 5}
                         max={findChartDataMinMax(humidityChartData)?.max + 5}
-                        label={'Vlhkost'}
+                        label={t("humidity")}
                         color={'rgb(54, 162, 235)'}
                     />
                 </div>

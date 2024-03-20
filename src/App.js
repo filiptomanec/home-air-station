@@ -7,6 +7,7 @@ import AuthProvider from "./auth/AuthProvider";
 import PrivateRoute from "./pages/PrivateRoute";
 import Login from "./components/Login";
 import Welcome from "./components/Welcome";
+import "./i18n";
 
 function App() {
     return (

@@ -3,21 +3,27 @@ import {Navigate, NavLink, Outlet} from "react-router-dom";
 import {useAuth} from "../auth/AuthProvider";
 import "../styles/main.css";
 import "../styles/button.css";
+import LanguageSelector from "../components/LanguageSelector";
+import {useTranslation} from "react-i18next";
 
 const PrivateRoute = () => {
     const auth = useAuth();
+    const {t} = useTranslation();
     if (!auth.token) return <Navigate to="/login"/>;
     return (
         <>
             <div className="flexContainer">
                 <div style={{flex: 1}}/>
-                <h1 className="noWrap">Domácí stanice</h1>
+                <h1 className="noWrap">{t("homeStation")}</h1>
                 <div style={{flex: 1, display: "flex", justifyContent: "flex-end"}}>
                     <div style={{marginBottom: 20}}>
-                        <h4 style={{margin: 10}}>Uživatel: {auth.user}</h4>
+                        <h4 style={{margin: 10}}>{t("user")}: {auth.user}</h4>
                         <button onClick={() => auth.logOut()} className="btnSubmit btnSubmit-small">
-                            Odhlásit
+                            {t("logout")}
                         </button>
+                    </div>
+                    <div className="flexContainer" style={{marginLeft: "50px"}}>
+                        <LanguageSelector/>
                     </div>
                 </div>
             </div>
@@ -26,17 +32,17 @@ const PrivateRoute = () => {
                 <ul style={{display: "flex"}}>
                     <li>
                         <NavLink to="/livingroom" className={({isActive}) => isActive && "active"}>
-                            Obývák
+                            {t("livingRoom")}
                         </NavLink>
                     </li>
                     <li>
                         <NavLink to="/bedroom" className={({isActive}) => isActive && "active"}>
-                            Ložnice
+                            {t("bedRoom")}
                         </NavLink>
                     </li>
                     <li style={{marginLeft: "auto"}}>
                         <NavLink to="/table" className={({isActive}) => isActive && "active"}>
-                            Tabulka
+                            {t("table")}
                         </NavLink>
                     </li>
                 </ul>

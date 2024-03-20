@@ -8,6 +8,8 @@ body {
 h1 {
     flex: 1;
     text-align: center;
+    font-size: 30px;
+    font-weight: bolder;
 }
 
 ul {
@@ -36,7 +38,7 @@ li a:hover:not(.active) {
 }
 
 .noWrap {
-    text-wrap: nowrap;
+    white-space: nowrap;
 }
 
 .active {
@@ -97,7 +99,6 @@ li a:hover:not(.active) {
 /* Mobile view */
 @media (max-width: 1200px) {
     body {
-        font-size: 22px;
         padding: 5px;
     }
 
@@ -105,19 +106,6 @@ li a:hover:not(.active) {
         padding: 10px;
         gap: 20px;
         flex-direction: column;
-    }
-
-    h1 {
-        font-size: 48px;
-    }
-
-    h2 {
-        font-size: 38px;
-    }
-
-    ul li a {
-        padding: 20px 24px;
-        font-size: 1.2em;
     }
 
     .dashboard div {

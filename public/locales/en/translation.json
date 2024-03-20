@@ -1,0 +1,15 @@
+{
+  "welcomeToTheHomeStationApp": "Welcome to the Home Air Station app!",
+  "login": "Log in",
+  "username": "Username",
+  "password": "Password",
+  "currentValues": "Current values",
+  "temperature": "Temperature",
+  "humidity": "Humidity",
+  "homeStation": "Home station",
+  "livingRoom": "Living Room",
+  "bedRoom": "Bed Room",
+  "table": "Table",
+  "user": "User",
+  "logout": "Log out"
+}
